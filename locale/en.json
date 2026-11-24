@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "News skill",
+    "description": "Adds a news skill for DSH. Ask for today's or a dated news briefing and it fetches four categories from public RSS and live feeds: international news, domestic economy, domestic tech, and global tech, five items each. Every item carries a title, source, timestamp, and the original link; nothing is invented when a source is unavailable. Use -Date yyyy-MM-dd for a past day."
+  }
+}

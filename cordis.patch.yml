@@ -1,0 +1,11 @@
+# Opt-in filesystem Skill provider for the bundled news skill.
+# Resolves the packaged Skill root from the installed npm identity anchored at
+# the DSH profile (Loader baseUrl), never as a path concatenated onto baseUrl.
+# This keeps the bundle portable after a local-directory install.
+- insert:
+    - id: news-skill-filesystem
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: news-plugin
+        includeDefaultRoots: true
+        bundledSkillDir: !!js process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('news-dsh/package.json')), 'skills')

@@ -1,0 +1,37 @@
+﻿{
+    "name":  "news-dsh",
+    "version":  "0.2.0",
+    "private":  true,
+    "type":  "module",
+    "description":  "DeepSeek Harness skill bundle for fetching dated international, domestic-economy, domestic-tech and global-tech news from public RSS and live feeds.",
+    "main":  "./index.js",
+    "exports":  {
+                    ".":  "./index.js",
+                    "./package.json":  "./package.json",
+                    "./locale/*.json":  "./locale/*.json",
+                    "./icon":  "./icon.svg"
+                },
+    "files":  [
+                  "index.js",
+                  "cordis.patch.yml",
+                  "SKILL.md",
+                  "skills",
+                  "scripts",
+                  "locale/*.json",
+                  "docs",
+                  "icon.svg",
+                  "README.md"
+              ],
+    "keywords":  [
+                     "dsh-plugin",
+                     "deepseek-harness",
+                     "news",
+                     "skill",
+                     "rss"
+                 ],
+    "dsh":  {
+                "bundle":  {
+                               "patch":  "./cordis.patch.yml"
+                           }
+            }
+}
