@@ -1,6 +1,6 @@
 ---
 name: news
-description: "获取指定日期（默认当天）的国际新闻、国内经济新闻、国内科技新闻、国际科技新闻，每类默认 5 条。使用公开 RSS 与快讯接口检索，返回标题、链接、来源、发布时间和摘要；只使用脚本能验证的新闻，不编造。Use when the user asks for today's or a given day's international news, domestic economy news, domestic tech news, or global tech news."
+description: "获取指定日期（默认当天）的国际新闻、国内经济新闻、国内科技新闻、国际科技新闻，每类默认 5 条。使用公开 RSS 与快讯接口检索，返回标题、链接、来源、发布时间和摘要；只使用脚本能验证的新闻，不编造。Also supplements the four feeds with a web search for major breaking news of the day. Use when the user asks for today's or a given day's international news, domestic economy news, domestic tech news, or global tech news."
 metadata:
   version: "0.2.0"
   language: zh-CN
@@ -51,6 +51,17 @@ $script = Join-Path (Split-Path $skillDir -Parent) 'scripts/fetch_news.ps1'
 & $script -Category tech          -Count 5
 & $script -Category global_tech   -Count 5
 ```
+### 重大新闻兜底（必做）
+
+脚本的固定源覆盖窄：航天发射、重大时政、灾害、突发事件常落在盲区（例：2026-11-25 神舟二十四号发射成功，四个源全漏）。所以每次生成新闻简报，**在脚本结果之外，必须再用联网搜索补一次当天重大新闻**：
+
+- 搜当天日期 + "重大新闻" / "突发" / "航天发射" 等，或直接用当天日期搜头条
+- 只采纳能给出**明确来源链接**且日期为当天的条目；搜不到的不要编
+- 把搜到的重大新闻单独列一节 **「重大新闻（搜索补充）」** 放在四类之前，每条给标题、来源、链接
+- 与脚本重复的条目不重复列出
+- 如果搜索无结果或工具不可用，如实说明"未能做搜索补充"，不要假装覆盖全面
+
+脚本结果照常按四类展示，搜索补充不混入四类——两者来源性质不同（脚本=固定源可验证，搜索=全网索引需甄别）。
 ## 数据源
 
 | 类别 | 源 |
